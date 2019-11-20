@@ -2,11 +2,6 @@ import React from "react";
 import Board from "./Board";
 import styled from "@emotion/styled";
 
-const GameContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
 const GameInfo = styled.div`
   margin-left: 20px;
 `;
@@ -17,12 +12,12 @@ const Ol = styled.ol`
 
 export default function Game() {
   return (
-    <GameContainer>
-      <Board />
+    <div>
+      <Board gameSize={9} />
       <GameInfo>
         <div>{/* status */}</div>
         <Ol>{/* TODO */}</Ol>
       </GameInfo>
-    </GameContainer>
+    </div>
   );
 }

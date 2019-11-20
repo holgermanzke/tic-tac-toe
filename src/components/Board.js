@@ -4,10 +4,19 @@ import { calculateWinner } from "../utils/helpers.js";
 import Status from "./Status";
 import styled from "@emotion/styled";
 
-export default function Board() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
+export default function Board({ gameSize }) {
+  const [squares, setSquares] = useState(Array(gameSize).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
   // console.log(xIsNext);
+
+  const SquareBox = styled.div`
+    display: grid;
+    grid-template-columns: repeat(${props => Math.sqrt(props.size)}, 1fr);
+    grid-template-rows: repeat(${props => Math.sqrt(props.size)}, 1fr);
+    grid-gap: 7px;
+    /* width: 120px; */
+    /* height: 120px; */
+  `;
 
   const winner = calculateWinner(squares);
   let status;
@@ -17,7 +26,6 @@ export default function Board() {
     status = xIsNext ? "Next Player: X" : "Next Player: O";
   }
   function handleClick(index) {
-    // console.log(index);
     const squaresClone = [...squares];
     if (!winner && !squaresClone[index]) {
       if (xIsNext) {
@@ -30,32 +38,21 @@ export default function Board() {
       setSquares(squaresClone);
     }
   }
-  const BoardRow = styled.div`
-    :after {
-      clear: both;
-      content: "";
-      display: table;
-    }
-  `;
 
   return (
     <div>
       <Status>{status}</Status>
-      <BoardRow>
+      <SquareBox size={gameSize}>
         <Square value={squares[0]} onClick={() => handleClick(0)} />
         <Square value={squares[1]} onClick={() => handleClick(1)} />
         <Square value={squares[2]} onClick={() => handleClick(2)} />
-      </BoardRow>
-      <BoardRow>
         <Square value={squares[3]} onClick={() => handleClick(3)} />
         <Square value={squares[4]} onClick={() => handleClick(4)} />
         <Square value={squares[5]} onClick={() => handleClick(5)} />
-      </BoardRow>
-      <BoardRow>
         <Square value={squares[6]} onClick={() => handleClick(6)} />
         <Square value={squares[7]} onClick={() => handleClick(7)} />
         <Square value={squares[8]} onClick={() => handleClick(8)} />
-      </BoardRow>
+      </SquareBox>
     </div>
   );
 }
