@@ -9,18 +9,19 @@ export const SquareBox = styled.div`
 `;
 
 const Button = styled.button`
-  background: #fff;
+  background: #5d7f96;
   border: 1px solid #999;
   float: left;
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 50px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 50px;
+  color: #e3e281;
   :focus {
     outline: none;
   }
