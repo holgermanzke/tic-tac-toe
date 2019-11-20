@@ -1,6 +1,7 @@
 import React from "react";
 import Game from "./components/Game";
 import styled from "@emotion/styled";
+import GlobalStyles from "./components/GlobalStyles";
 
 const AppStyle = styled.div`
   text-align: center;
@@ -14,6 +15,8 @@ const AppStyle = styled.div`
 function App() {
   return (
     <AppStyle>
+      <GlobalStyles />
+
       <h1>Tic Tac Toe</h1>
 
       <Game />
